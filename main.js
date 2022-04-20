@@ -58,4 +58,71 @@ If either of the characters is not a letter, return -1
 If both characters are the same case, return 1
 If both characters are letters, but not the same case, return 0
 
+
+
+There was a test in your class and you passed it. Congratulations!
+But you're an ambitious person. You want to know if you're better than the average student in your class.
+
+You receive an array with your peers' test scores. Now calculate the average and compare your score!
+
+Return True if you're better, else False!
+
+Note:
+Your points are not included in the array of your class's points. For calculating the average point you may add your point to the given array!
+
+
+
+const betterThanAverage = function (classPoints, yourPoints) {
+  const classTotalPoints = classPoints.reduce((acc, point) => acc + point);
+  console.log(classTotalPoints / classPoints.length);
+  const classAverage = classTotalPoints / classPoints.length;
+
+  if (yourPoints > classAverage) {
+    console.log('true');
+  } else {
+    console.log('false');
+  }
+};
+
+betterThanAverage([20, 50, 69, 80, 70], 56);
+
+
+
+DropCaps means that the first letter of the starting word of the paragraph should be in caps and the remaining lowercase, just like you see in the newspaper.
+
+But for a change, let"s do that for each and every word of the given String. Your task is to capitalize every word that has length greater than 2, leaving smaller words as they are.
+
+*should work also on Leading and Trailing Spaces and caps.
+
+"apple"            => "Apple"
+"apple of banana"  => "Apple of Banana"
+"one   space"      => "One   Space 
+"   space WALK   " => "   Space Walk   " 
+Note: you will be provided atleast one word and should take string as input and return string as output.
 */
+
+const convertString = function (str) {
+  const intoArray = str.split(' ');
+  console.log(intoArray);
+  const stringLength = intoArray
+    .map((word) =>
+      word.length > 2
+        ? word[0].toUpperCase() + word.substr(1).toLowerCase()
+        : word
+    )
+    .join(' ');
+
+  console.log(stringLength);
+  // if(word.length > 2) {
+  //   const toLowerCase = intoArray.map((word) => word.toLowerCase());
+  //   const firstLetterUpper = toLowerCase.map(
+  //     (wor) => wor[0].toUpperCase() + wor.substr(1)
+  //   );
+  //   console.log(firstLetterUpper.join(' '));
+  // }else {
+  //   return;
+  // }
+};
+
+convertString('apple of WALK');
+convertString('   space WALK   ');
