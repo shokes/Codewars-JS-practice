@@ -99,7 +99,7 @@ But for a change, let"s do that for each and every word of the given String. You
 "one   space"      => "One   Space 
 "   space WALK   " => "   Space Walk   " 
 Note: you will be provided atleast one word and should take string as input and return string as output.
-*/
+
 
 const convertString = function (str) {
   const intoArray = str.split(' ');
@@ -126,3 +126,41 @@ const convertString = function (str) {
 
 convertString('apple of WALK');
 convertString('   space WALK   ');
+
+Complete the square sum function so that it squares each number passed into it and then sums the results together.
+
+For example, for [1, 2, 2] it should return 9 because 1^2 + 2^2 + 2^2 = 9.
+
+
+
+const squareSum = function (numbers) {
+  const result = numbers.map((num) => num * num);
+  console.log(result);
+  // .reduce((acc, val) => acc + val, 0);
+  // console.log(result);
+};
+
+squareSum([1, 2, 2]);
+
+
+Write a method, that will get an integer array as parameter and will process every number from this array.
+
+Return a new array with processing every number of the input-array like this:
+
+If the number has an integer square root, take this, otherwise square the number.
+
+Example
+[4,3,9,7,2,1] -> [2,9,3,49,4,1]
+
+
+
+const processArray = function (parameter) {
+  const result = parameter.map((para) =>
+    Number.isInteger(Math.sqrt(para)) ? Math.sqrt(para) : para * para
+  );
+  // .map((num) => (Number.isInteger(num) ? num : num * num));
+  console.log(result);
+};
+
+processArray([4, 3, 9, 7, 2, 1]);
+*/
