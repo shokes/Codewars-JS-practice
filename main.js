@@ -438,4 +438,24 @@ stringWords('1', '22');
 stringWords('22', '1');
 stringWords('', '1');
 stringWords('Soon', 'Me');
+
+
+Create a function that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers.
+
+
+const check = function (num) {
+  if (num % 2 === 0) {
+    console.log('even');
+  } else {
+    console.log('odd');
+  }
+};
+
+check(2);
+check(3);
+check(4);
+
+You are given array of integers, your task will be to count all pairs in that array and return their count.
+
 */
+
