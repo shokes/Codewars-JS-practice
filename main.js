@@ -455,7 +455,46 @@ check(2);
 check(3);
 check(4);
 
-You are given array of integers, your task will be to count all pairs in that array and return their count.
+vGiven a list of integers, determine whether the sum of its elements is odd or even.
+
+Give your answer as a string matching "odd" or "even".
+
+If the input array is empty consider it as: [0] (array with a zero).
+
+Examples:
+Input: [0]
+Output: "even"
+
+Input: [0, 1, 4]
+Output: "odd"
+
+Input: [0, -1, -5]
+Output: "even"
+
+const integers = function (arr) {
+  if (arr.length === 0) {
+    console.log('empty');
+  } else {
+    const reduced = arr.reduce((num, acc) => num + acc, 0);
+    if (reduced % 2 === 0) {
+      console.log('even');
+    } else {
+      console.log('odd');
+    }
+  }
+};
+
+integers([0, 1, 4]);
+
+
+Your function takes two arguments:
+
+current father's age (years)
+current age of his son (years)
+Сalculate how many years ago the father was twice as old as his son (or in how many years he will be twice as old).
+
+Given two integers a and b, which can be positive or negative, find the sum of all the integers between and including them and return it. If the two numbers are equal return a or b.
+
+Note: a and b are not ordered!
 
 */
-
