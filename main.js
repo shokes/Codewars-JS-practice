@@ -527,4 +527,45 @@ const myFun = () => {
 let myTimer = setInterval(myFun, 1000);
 clearInterval(myTimer);
 //myTimer = setInterval(myFun, 4000);
+
+This is a demo task.
+
+Write a function:
+
+function solution(A);
+
+that, given an array A of N integers, returns the smallest positive integer (greater than 0) that does not occur in A.
+
+For example, given A = [1, 3, 6, 4, 1, 2], the function should return 5.
+
+Given A = [1, 2, 3], the function should return 4.
+
+Given A = [−1, −3], the function should return 1.
+
+Write an efficient algorithm for the following assumptions:
+
+N is an integer within the range [1..100,000];
+each element of array A is an integer within the range [−1,000,000..1,000,000].
+
+
+function solution(A) {
+  for (i = 1; i < 1000000; i++) {
+    if (!A.includes(i)) return i;
+  }
+}
+
+
+In order to satisfy the O(N) time-complexity, construct a Set() in O(N) time and space complexity, then use a while loop which is considered constant time relative to N O(N) as well (thank you, wchargin), since the maximum possible number of iterations is equal to N and average performance of a Set#has() operation is O(1). Because O(N + N) = O(N), regarding time complexity, this solution is overall O(N) performance in both time and space:
+
+
+function solution(A) {
+  const set = new Set(A);
+  let i = 1;
+
+  while (set.has(i)) {
+    i++;
+  }
+
+  return i;
+}
 */
