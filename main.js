@@ -568,4 +568,624 @@ function solution(A) {
 
   return i;
 }
+
+
+1. Remove all even integers from an array
+Input: [4, 1, 9, 10, 15, 22, 5, 14]
+
+Output: [4, 10, 22, 14]
+
+
+const removeEvenIntegers = function (arr) {
+  const result = arr.filter((num) => num % 2 === 0);
+
+  console.log(result);
+};
+
+removeEvenIntegers([4, 1, 9, 10, 15, 22, 5, 14]);
+
+
+Find all repeated numbers from an array
+Input: [1,2,4,5,6,1,3,7,9,10]
+Output: [1, 2, 4, 5, 6, 3, 7, 9, 10];
+
+
+const repeatedNumbers = function (arr) {
+  const set = new Set(arr);
+  console.log(set);
+};
+
+repeatedNumbers([1, 2, 4, 5, 6, 1, 3, 7, 9, 10]);
+
+
+Create a function that gives a personalized greeting. This function takes two parameters: name and owner.
+
+Use conditionals to return the proper message:
+
+case	return
+name equals owner	'Hello boss'
+otherwise	'Hello guest'
+
+
+function greet(name, owner) {
+  // Add code here
+  if (name === owner) {
+    return 'hello boss';
+  } else {
+    return 'hello guest';
+  }
+}
+
+Given an array of strings representing a list of usernames, return true only if all usernames comply with your company's guidelines. Return false otherwise.
+
+The guidelines say that the username is valid only if:
+
+it is between 6-10 characters long;
+contains at least 1 lowercase letter;
+contains at least 1 number;
+contains only numbers and lowercase letters.
+Examples of arrays that will be tested:
+
+const usernames1 = ['john123', 'alex222', 'sandra1']; // returns true
+
+const usernames2 = ['john123', 'alex222', 'sandraW']; // returns false because sandraW has no number
+
+const usernames3 = ['john_123', 'alex222', 'sandra1']; // returns false because john_123 contains an invalid character
+
+Notes:
+
+You will always be given an array with at least 1 string to check.
+
+
+const checkUsernames = function (arr) {
+  const result = arr.every(
+    (word) =>
+      word.length >= 6 && word.length <= 10 &&  /[a-z]/.test(word) &&
+     /\d/.test(word) && /^[A-Za-z0-9]*$/.test(word)
+    
+  
+  );
+  console.log(result);
+};
+checkUsernames(['john123', 'alex222', 'sandra1']);
+checkUsernames(['john_123', 'alex222', 'sandra1']);
+//const result = arr.every((word) => {word.length >= 6 && word.length <= 10
+
+
+const a = 5; // 00000000000000000000000000000101
+const b = 3;
+console.log(a ^ b);
+
+You will be given an array of objects (associative arrays in PHP, table in COBOL) representing data about developers who have signed up to attend the next coding meetup that you are organising.
+
+Your task is to return an object (associative array in PHP, table in COBOL) which includes the count of each coding language represented at the meetup.
+
+For example, given the following input array:
+
+var list1 = [
+  { firstName: 'Noah', lastName: 'M.', country: 'Switzerland', continent: 'Europe', age: 19, language: 'C' },
+  { firstName: 'Anna', lastName: 'R.', country: 'Liechtenstein', continent: 'Europe', age: 52, language: 'JavaScript' },
+  { firstName: 'Ramon', lastName: 'R.', country: 'Paraguay', continent: 'Americas', age: 29, language: 'Ruby' },
+  { firstName: 'George', lastName: 'B.', country: 'England', continent: 'Europe', age: 81, language: 'C' },
+];
+
+your function should return the following object (associative array in PHP, table in COBOL):
+
+{ C: 2, JavaScript: 1, Ruby: 1 }
+
+
+var list1 = [
+  {
+    firstName: 'Noah',
+    lastName: 'M.',
+    country: 'Switzerland',
+    continent: 'Europe',
+    age: 19,
+    language: 'C',
+  },
+  {
+    firstName: 'Anna',
+    lastName: 'R.',
+    country: 'Liechtenstein',
+    continent: 'Europe',
+    age: 52,
+    language: 'JavaScript',
+  },
+  {
+    firstName: 'Ramon',
+    lastName: 'R.',
+    country: 'Paraguay',
+    continent: 'Americas',
+    age: 29,
+    language: 'Ruby',
+  },
+  {
+    firstName: 'George',
+    lastName: 'B.',
+    country: 'England',
+    continent: 'Europe',
+    age: 81,
+    language: 'C',
+  },
+];
+
+const list = function (arr) {
+  const result = arr.reduce((total, item) => {
+    console.log(total);
+    const { language } = item;
+    console.log(language);
+
+    // if (!language) return total;
+    if (!total[language]) {
+      total[language] = 1;
+    } else {
+      // total[language] = {
+      //   ...total[language],
+      //    total[language]
+      // };
+      total[language] = total[language] + 1;
+    }
+
+    return total;
+  }, {});
+  console.log(result);
+};
+
+list(list1);
+
+// const languages = repos.reduce((total, item) => {
+//   const { language, stargazers_count } = item;
+//   if (!language) return total;
+//   if (!total[language]) {
+//     total[language] = { label: language, value: 1, stars: stargazers_count };
+//   } else {
+//     total[language] = {
+//       ...total[language],
+//       value: total[language].value + 1,
+//       stars: total[language].stars + stargazers_count,
+//     };
+//   }
+//   return total;
+// }, {});
+
+
+
+You will be given an array of objects (associative arrays in PHP, tables in COBOL) representing data about developers who have signed up to attend the next coding meetup that you are organising.
+
+Your task is to return an array where each object will have a new property 'greeting' with the following string value:
+
+Hi < firstName here >, what do you like the most about < language here >?
+
+For example, given the following input array:
+
+var list1 = [
+  { firstName: 'Sofia', lastName: 'I.', country: 'Argentina', continent: 'Americas', age: 35, language: 'Java' },
+  { firstName: 'Lukas', lastName: 'X.', country: 'Croatia', continent: 'Europe', age: 35, language: 'Python' },
+  { firstName: 'Madison', lastName: 'U.', country: 'United States', continent: 'Americas', age: 32, language: 'Ruby' } 
+];
+your function should return the following array:
+
+[
+  { firstName: 'Sofia', lastName: 'I.', country: 'Argentina', continent: 'Americas', age: 35, language: 'Java',
+    greeting: 'Hi Sofia, what do you like the most about Java?'
+  },
+  { firstName: 'Lukas', lastName: 'X.', country: 'Croatia', continent: 'Europe', age: 35, language: 'Python',
+    greeting: 'Hi Lukas, what do you like the most about Python?'
+  },
+  { firstName: 'Madison', lastName: 'U.', country: 'United States', continent: 'Americas', age: 32, language: 'Ruby',
+    greeting: 'Hi Madison, what do you like the most about Ruby?'
+  } 
+];
+Notes:
+
+The order of the properties in the objects does not matter (except in COBOL).
+The input array will always be valid and formatted as in the example above.
+
+
+
+
+
+var list1 = [
+  {
+    firstName: 'Sofia',
+    lastName: 'I.',
+    country: 'Argentina',
+    continent: 'Americas',
+    age: 35,
+    language: 'Java',
+  },
+  {
+    firstName: 'Lukas',
+    lastName: 'X.',
+    country: 'Croatia',
+    continent: 'Europe',
+    age: 35,
+    language: 'Python',
+  },
+  {
+    firstName: 'Madison',
+    lastName: 'U.',
+    country: 'United States',
+    continent: 'Americas',
+    age: 32,
+    language: 'Ruby',
+  },
+];
+//your function should return the following array:
+
+[
+  {
+    firstName: 'Sofia',
+    lastName: 'I.',
+    country: 'Argentina',
+    continent: 'Americas',
+    age: 35,
+    language: 'Java',
+    greeting: 'Hi Sofia, what do you like the most about Java?',
+  },
+  {
+    firstName: 'Lukas',
+    lastName: 'X.',
+    country: 'Croatia',
+    continent: 'Europe',
+    age: 35,
+    language: 'Python',
+    greeting: 'Hi Lukas, what do you like the most about Python?',
+  },
+  {
+    firstName: 'Madison',
+    lastName: 'U.',
+    country: 'United States',
+    continent: 'Americas',
+    age: 32,
+    language: 'Ruby',
+    greeting: 'Hi Madison, what do you like the most about Ruby?',
+  },
+];
+
+const solution = function (arr) {
+  const modi = arr.map((item) => {
+    //  item.greeting = 'hi';
+
+    const { firstName, language } = item;
+    item.greeting = `Hi ${firstName}, what do you like the most about ${language}?`;
+    return item;
+  });
+  console.log(modi);
+};
+
+solution(list1);
+
+You will be given an array of objects representing data about developers who have signed up to attend the next coding meetup that you are organising.
+
+Your task is to return an object which includes the count of food options selected by the developers on the meetup sign-up form..
+
+For example, given the following input array:
+
+var list1 = [
+  { firstName: 'Noah', lastName: 'M.', country: 'Switzerland', continent: 'Europe', age: 19, language: 'C', 
+    meal: 'vegetarian' },
+  { firstName: 'Anna', lastName: 'R.', country: 'Liechtenstein', continent: 'Europe', age: 52, language: 'JavaScript', 
+    meal: 'standard' },
+  { firstName: 'Ramona', lastName: 'R.', country: 'Paraguay', continent: 'Americas', age: 29, language: 'Ruby', 
+    meal: 'vegan' },
+  { firstName: 'George', lastName: 'B.', country: 'England', continent: 'Europe', age: 81, language: 'C', 
+    meal: 'vegetarian' },
+];
+your function should return the following object (the order of properties does not matter):
+
+{ vegetarian: 2, standard: 1, vegan: 1 }
+Notes:
+
+The order of the meals count in the object does not matter.
+The count value should be a valid number.
+The input array will always be valid and formatted as in the example above.
+there are 5 possible meal options and the strings representing the selected meal option will always be formatted in the same way, as follows: 'standard', 'vegetarian', 'vegan', 'diabetic', 'gluten-intolerant'.
+
+
+
+
+const meetUp = function (arr) {
+  const result = arr.reduce((total, item) => {
+    const { meal } = item;
+    if (!total[meal]) {
+      total[meal] = 1;
+    } else {
+      total[meal] = total[meal] + 1;
+    }
+    return total;
+  }, {});
+  console.log(result);
+};
+
+
+You will be given an array of objects (hashes in ruby) representing data about developers who have signed up to attend the coding meetup that you are organising for the first time.
+
+Your task is to return the number of JavaScript developers coming from Europe.
+
+For example, given the following list:
+
+var list1 = [
+  { firstName: 'Noah', lastName: 'M.', country: 'Switzerland', continent: 'Europe', age: 19, language: 'JavaScript' },
+  { firstName: 'Maia', lastName: 'S.', country: 'Tahiti', continent: 'Oceania', age: 28, language: 'JavaScript' },
+  { firstName: 'Shufen', lastName: 'L.', country: 'Taiwan', continent: 'Asia', age: 35, language: 'HTML' },
+  { firstName: 'Sumayah', lastName: 'M.', country: 'Tajikistan', continent: 'Asia', age: 30, language: 'CSS' }
+];
+your function should return number 1.
+
+If, there are no JavaScript developers from Europe then your function should return 0.
+
+Notes:
+
+The format of the strings will always be Europe and JavaScript.
+All data will always be valid and uniform as in the example above.
+
+
+var list1 = [
+  {
+    firstName: 'Noah',
+    lastName: 'M.',
+    country: 'Switzerland',
+    continent: 'Europe',
+    age: 19,
+    language: 'JavaScript',
+  },
+
+  {
+    firstName: 'Maia',
+    lastName: 'S.',
+    country: 'Tahiti',
+    continent: 'Oceania',
+    age: 28,
+    language: 'JavaScript',
+  },
+  {
+    firstName: 'Shufen',
+    lastName: 'L.',
+    country: 'Taiwan',
+    continent: 'Asia',
+    age: 35,
+    language: 'HTML',
+  },
+  {
+    firstName: 'Sumayah',
+    lastName: 'M.',
+    country: 'Tajikistan',
+    continent: 'Asia',
+    age: 30,
+    language: 'CSS',
+  },
+];
+
+const meetUp = function (arr) {
+  let count = 0;
+  arr.map((item) => {
+    if (item.continent === 'Europe' && item.language === 'JavaScript') {
+      count++;
+    } else {
+      count;
+    }
+  });
+
+  console.log(count);
+};
+
+meetUp(list1);
+
+
+
+Kiyo has been given a series of problems and she needs your help to solve them!
+
+You will be given a two-dimensional array such as the one below.
+
+a = 
+[
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9]
+]
+
+Remove everything but odd integers from each sub-array.
+
+Sum the remaining odd integers of each sub-array. 
+
+Sum of odds ( a[0] = 1 + 3 + 5 + 7 + 9 ) = 25
+       
+Find the Least common multiple of the arrays.
+
+ (25, 25, 25, 25, 25, 25, 25, 25, 25)
+  ^                                ^ 
+  |                                |
+a[0]-----------------------------a[8]
+
+example : lcm( 25, 25, 25, 25, 25, 25, 25, 25, 25 ) = 25
+
+example : lcm( 37, 29, 19, 38, 31, 28, 15, 24, 9 ) = 1592632440
+Integers are between 0 and 9. Sub-array size is always 9. The number of sub-arrays varies between 9 and 18.
+
+Watch out for non-integers mixed in the arrays. If all arrays are empty return 0.
+
+
+a = [
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+];
+
+const kiyo = function (arr) {
+  const result = arr
+    .map((item) => item.filter((num) => num % 2 !== 0))
+    .map((item) => item.reduce((acc, num) => acc + num, 0));
+
+  // const results = result.map((item) => item.reduce((acc, num) => acc + num, 0));
+  // console.log(result);
+
+  maximum = Math.max(...result);
+  // console.log(maximum);
+
+  for (i = 1; i < maximum; i++) {
+    // if (result.every((num) => i % num === 1)) console.log(i);
+    // if (result.every((num) => i / num === 0)) {
+    //   console.log(i);
+    // }
+
+    result.every((num) => {
+      if (i % num == 0) console.log('working');
+    });
+  }
+};
+kiyo(a);
+//   for (i = 1; i < 1000000; i++) {
+//     if (!A.includes(i)) return i;
+//   }
+
+// const yii = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+// const result = yii.every((num) => num > 1);
+// console.log(result);
+
+Create a function with two arguments that will return an array of the first (n) multiples of (x).
+
+Assume both the given number and the number of times to count will be positive numbers greater than 0.
+
+Return the results as an array (or list in Python, Haskell or Elixir).
+
+Examples:
+
+countBy(1,10) === [1,2,3,4,5,6,7,8,9,10]
+countBy(2,5) === [2,4,6,8,10]
+
+
+const countBy = function (x, y) {
+  let z = [];
+
+  for (i = x; i <= x * y; i += x) {
+    z.push(i);
+  }
+  console.log(z);
+};
+
+countBy(1, 10);
+countBy(2, 5);
+
+
+You will be given an array of objects representing data about developers who have signed up to attend the next web development meetup that you are organising. Three programming languages will be represented: Python, Ruby and JavaScript.
+
+Your task is to return either:
+
+true if the number of meetup participants representing any of the three programming languages is ** at most 2 times higher than the number of developers representing any of the remaining programming languages**; or
+false otherwise.
+For example, given the following input array:
+
+var list1 = [
+  { firstName: 'Daniel', lastName: 'J.', country: 'Aruba', continent: 'Americas', age: 42, language: 'Python' },
+  { firstName: 'Kseniya', lastName: 'T.', country: 'Belarus', continent: 'Europe', age: 22, language: 'Ruby' },
+  { firstName: 'Sou', lastName: 'B.', country: 'Japan', continent: 'Asia', age: 43, language: 'Ruby' },
+  { firstName: 'Hanna', lastName: 'L.', country: 'Hungary', continent: 'Europe', age: 95, language: 'JavaScript' },
+  { firstName: 'Jayden', lastName: 'P.', country: 'Jamaica', continent: 'Americas', age: 18, language: 'JavaScript' },
+  { firstName: 'Joao', lastName: 'D.', country: 'Portugal', continent: 'Europe', age: 25, language: 'JavaScript' }
+];
+your function should return false as the number of JavaScript developers (3) is 3 times higher than the number of Python developers (1). It can't be more than 2 times higher to be regarded as language-diverse.
+
+Notes:
+
+The strings representing all three programming languages will always be formatted in the same way (e.g. 'JavaScript' will always be formatted with upper-case 'J' and 'S'.
+The input array will always be valid and formatted as in the example above.
+Each of the 3 programming languages will always be represented.
+
+
+
+
+var list1 = [
+  {
+    firstName: 'Daniel',
+    lastName: 'J.',
+    country: 'Aruba',
+    continent: 'Americas',
+    age: 42,
+    language: 'Python',
+  },
+  {
+    firstName: 'Kseniya',
+    lastName: 'T.',
+    country: 'Belarus',
+    continent: 'Europe',
+    age: 22,
+    language: 'Ruby',
+  },
+  {
+    firstName: 'Sou',
+    lastName: 'B.',
+    country: 'Japan',
+    continent: 'Asia',
+    age: 43,
+    language: 'Ruby',
+  },
+  {
+    firstName: 'Hanna',
+    lastName: 'L.',
+    country: 'Hungary',
+    continent: 'Europe',
+    age: 95,
+    language: 'JavaScript',
+  },
+  {
+    firstName: 'Jayden',
+    lastName: 'P.',
+    country: 'Jamaica',
+    continent: 'Americas',
+    age: 18,
+    language: 'JavaScript',
+  },
+  {
+    firstName: 'Joao',
+    lastName: 'D.',
+    country: 'Portugal',
+    continent: 'Europe',
+    age: 25,
+    language: 'JavaScript',
+  },
+];
+
+const list = function (arr) {
+  const result = arr.reduce((total, item) => {
+    const { language } = item;
+    if (!total[language]) {
+      total[language] = 1;
+    } else {
+      total[language] = total[language] + 1;
+    }
+    return total;
+  }, {});
+  console.log(result);
+
+  const { Python, Ruby, JavaScript } = result;
+
+  if (
+    JavaScript > 2 * Ruby ||
+    JavaScript > 2 * Python ||
+    Ruby > 2 * JavaScript ||
+    Ruby > 2 * Python ||
+    Python > 2 * JavaScript ||
+    Python > 2 * Ruby
+  ) {
+    console.log('false');
+  } else {
+    console.log('true');
+  }
+};
+
+list(list1);
 */
