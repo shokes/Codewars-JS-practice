@@ -1188,4 +1188,591 @@ const list = function (arr) {
 };
 
 list(list1);
+
+
+You are given a list/array which contains only integers (positive and negative). Your job is to sum only the numbers that are the same and consecutive. The result should be one list.
+
+Extra credit if you solve it in one line. You can assume there is never an empty list/array and there will always be an integer.
+
+Same meaning: 1 == 1
+
+1 != -1
+
+#Examples:
+
+[1,4,4,4,0,4,3,3,1] # should return [1,12,0,4,6,1]
+
+"""So as you can see sum of consecutives 1 is 1 
+sum of 3 consecutives 4 is 12 
+sum of 0... and sum of 2 
+consecutives 3 is 6 ..."""
+
+[1,1,7,7,3] # should return [2,14,3]
+[-5,-5,7,7,12,0] # should return [-10,14,12,0]
+
+const integers = function(arr) {
+arr.
+}
+
+Write a function that accepts an integer n and a string s as parameters, and returns a string of s repeated exactly n times.
+
+Examples (input -> output)
+6, "I"     -> "IIIIII"
+5, "Hello" -> "HelloHelloHelloHelloHello"
+
+
+const accepts = function (num, str) {
+  let result = [];
+  for (i = 1; i <= num; i++) {
+    result.push(str);
+  }
+  console.log(result.join(''));
+};
+
+accepts(3, '*');
+
+
+You will be given an array of objects representing data about developers who have signed up to attend the next coding meetup that you are organising.
+
+Given the following input array:
+
+var list1 = [
+  { firstName: 'Harry', lastName: 'K.', country: 'Brazil', continent: 'Americas', age: 22, language: 'JavaScript', githubAdmin: 'yes' },
+  { firstName: 'Kseniya', lastName: 'T.', country: 'Belarus', continent: 'Europe', age: 49, language: 'Ruby', githubAdmin: 'no' },
+  { firstName: 'Jing', lastName: 'X.', country: 'China', continent: 'Asia', age: 34, language: 'JavaScript', githubAdmin: 'yes' },
+  { firstName: 'Piotr', lastName: 'B.', country: 'Poland', continent: 'Europe', age: 128, language: 'JavaScript', githubAdmin: 'no' }
+];
+write a function that when executed as findAdmin(list1, 'JavaScript') returns only the JavaScript developers who are GitHub admins:
+
+[
+  { firstName: 'Harry', lastName: 'K.', country: 'Brazil', continent: 'Americas', age: 22, language: 'JavaScript', githubAdmin: 'yes' },
+  { firstName: 'Jing', lastName: 'X.', country: 'China', continent: 'Asia', age: 34, language: 'JavaScript', githubAdmin: 'yes' }
+]
+Notes:
+
+The original order should be preserved.
+If there are no GitHub admin developers in a given language then return an empty array [].
+The input array will always be valid and formatted as in the example above.
+The strings representing whether someone is a GitHub admin will always be formatted as 'yes' and 'no' (all lower-case).
+The strings representing a given language will always be formatted in the same way (e.g. 'JavaScript' will always be formatted with upper-case 'J' and 'S'.
+
+
+
+var list1 = [
+  {
+    firstName: 'Harry',
+    lastName: 'K.',
+    country: 'Brazil',
+    continent: 'Americas',
+    age: 22,
+    language: 'JavaScript',
+    githubAdmin: 'yes',
+  },
+  {
+    firstName: 'Kseniya',
+    lastName: 'T.',
+    country: 'Belarus',
+    continent: 'Europe',
+    age: 49,
+    language: 'Ruby',
+    githubAdmin: 'no',
+  },
+  {
+    firstName: 'Jing',
+    lastName: 'X.',
+    country: 'China',
+    continent: 'Asia',
+    age: 34,
+    language: 'JavaScript',
+    githubAdmin: 'yes',
+  },
+  {
+    firstName: 'Piotr',
+    lastName: 'B.',
+    country: 'Poland',
+    continent: 'Europe',
+    age: 128,
+    language: 'JavaScript',
+    githubAdmin: 'no',
+  },
+];
+
+const findAdmin = function (arr, language) {
+  let data = [];
+
+  arr.map((item) => {
+    if (item.language === language && item.githubAdmin === 'yes') {
+      data.push(item);
+    } else {
+      return;
+    }
+  });
+  return data;
+};
+
+findAdmin(list1, 'JavaScript');
+
+
+
+You will be given an array of objects (associative arrays in PHP) representing data about developers who have signed up to attend the next coding meetup that you are organising.
+
+Your task is to return:
+
+true if at least one Ruby developer has signed up; or
+false if there will be no Ruby developers.
+For example, given the following input array:
+
+var list1 = [
+  { firstName: 'Emma', lastName: 'Z.', country: 'Netherlands', continent: 'Europe', age: 29, language: 'Ruby' },
+  { firstName: 'Piotr', lastName: 'B.', country: 'Poland', continent: 'Europe', age: 128, language: 'Javascript' },
+  { firstName: 'Jayden', lastName: 'P.', country: 'Jamaica', continent: 'Americas', age: 42, language: 'JavaScript' }
+];
+your function should return true.
+
+Notes:
+
+The input array will always be valid and formatted as in the example above.
+
+
+
+var list1 = [
+  {
+    firstName: 'Emma',
+    lastName: 'Z.',
+    country: 'Netherlands',
+    continent: 'Europe',
+    age: 29,
+    language: 'Ruby',
+  },
+  {
+    firstName: 'Piotr',
+    lastName: 'B.',
+    country: 'Poland',
+    continent: 'Europe',
+    age: 128,
+    language: 'Javascript',
+  },
+  {
+    firstName: 'Jayden',
+    lastName: 'P.',
+    country: 'Jamaica',
+    continent: 'Americas',
+    age: 42,
+    language: 'JavaScript',
+  },
+];
+
+const check = function (arr) {
+  const result = arr.reduce((total, item) => {
+    const { language } = item;
+    if (!total[language]) {
+      total[language] = 1;
+    } else {
+      total[language] = total[language] + 1;
+    }
+
+    return total;
+  }, {});
+  console.log(result);
+  const { Ruby } = result;
+  if (Ruby >= 1) {
+    return console.log('true');
+  } else {
+    console.log('false');
+  }
+};
+
+check(list1);
+
+
+
+
+Given the following input array:
+
+var list1 = [
+  { firstName: 'Emily', lastName: 'N.', country: 'Ireland', continent: 'Europe', age: 30, language: 'Ruby' },
+  { firstName: 'Nor', lastName: 'E.', country: 'Malaysia', continent: 'Asia', age: 20, language: 'Clojure' }
+];
+write a function that adds the username property to each object in the input array:
+
+[
+  { firstName: 'Emily', lastName: 'N.', country: 'Ireland', continent: 'Europe', age: 30, language: 'Ruby', 
+    username: 'emilyn1990' },
+  { firstName: 'Nor', lastName: 'E.', country: 'Malaysia', continent: 'Asia', age: 20, language: 'Clojure', 
+    username: 'nore2000' }
+]
+The value of the username property is composed by concatenating:
+
+firstName in lower-case;
+first letter of the lastName in lower-case; and
+the birth year which for the purpose of this kata is calculated simply by subtracting age from the current year. Please make sure that your function delivers the correct birth year irrespective of when it will be executed, for example it should also work correctly for a meetup organised in 10-years-time. The example above assumes that the function is run in year 2020.
+Notes:
+
+The input array will always be valid and formatted as in the example above.
+Age is represented by a number which can be any positive integer.
+Lastname will always be one upper-cased letter followed by dot, e.g. 'N.'
+Order of the objects in the array should be maintained but order of the properties in the individual objects does not matter.
+
+
+var list1 = [
+  {
+    firstName: 'Emily',
+    lastName: 'N.',
+    country: 'Ireland',
+    continent: 'Europe',
+    age: 30,
+    language: 'Ruby',
+  },
+  {
+    firstName: 'Nor',
+    lastName: 'E.',
+    country: 'Malaysia',
+    continent: 'Asia',
+    age: 20,
+    language: 'Clojure',
+  },
+];
+
+const createUsername = function (arr) {
+  arr.map((item) => {
+    const { firstName, lastName, age } = item;
+
+    const d = new Date();
+    let Currentyear = d.getFullYear();
+
+    firstLetterLastName = lastName[0].toLowerCase();
+    //  year = Currentyear - age;
+    // console.log(firstLetterLastName);
+
+    item.username = `${firstName.toLowerCase()}${firstLetterLastName}${
+      Currentyear - age
+    }`;
+    console.log(item);
+  });
+};
+
+createUsername(list1);
+
+function addUsername(list) {
+  return list.map(function (x) {
+    x.username =
+      x.firstName.toLowerCase() +
+      x.lastName[0].toLowerCase() +
+      (new Date().getFullYear() - x.age);
+    return x;
+  });
+}
+
+
+You will be given a sequence of objects representing data about developers who have signed up to attend the next coding meetup that you are organising.
+
+Given the following input array:
+
+var list1 = [
+  { firstName: 'Maria', lastName: 'Y.', country: 'Cyprus', continent: 'Europe', age: 30, language: 'Java' },
+  { firstName: 'Victoria', lastName: 'T.', country: 'Puerto Rico', continent: 'Americas', age: 70, language: 'Python' },
+];
+write a function that returns the average age of developers (rounded to the nearest integer). In the example above your function should return 50 (number).
+
+Notes:
+
+The input array will always be valid and formatted as in the example above.
+Age is represented by a number which can be any positive integer.
+
+
+var list1 = [
+  {
+    firstName: 'Maria',
+    lastName: 'Y.',
+    country: 'Cyprus',
+    continent: 'Europe',
+    age: 30,
+    language: 'Java',
+  },
+  {
+    firstName: 'Victoria',
+    lastName: 'T.',
+    country: 'Puerto Rico',
+    continent: 'Americas',
+    age: 70,
+    language: 'Python',
+  },
+];
+
+const averageAge = function (arr) {
+  let theAge = [];
+  arr.map((item) => {
+    theAge.push(item.age);
+  });
+
+  const total = theAge.reduce((acc, num) => acc + num, 0);
+  return (total / theAge.length).toFixed(0);
+};
+
+averageAge(list1);
+
+
+
+
+You will be given an array of objects representing data about developers who have signed up to attend the next coding meetup that you are organising.
+
+Given the following input array:
+
+var list1 = [
+  { firstName: 'Aba', lastName: 'N.', country: 'Ghana', continent: 'Africa', age: 21, language: 'Python' },
+  { firstName: 'Abb', lastName: 'O.', country: 'Israel', continent: 'Asia', age: 39, language: 'Java' }
+];
+write a function that when executed as findOddNames(list1) returns only the developers where if you add the ASCII representation of all characters in their first names, the result will be an odd number:
+
+[
+  { firstName: 'Abb', lastName: 'O.', country: 'Israel', continent: 'Asia', age: 39, language: 'Java' }
+]
+Explanation of the above:
+
+Sum of ASCII codes of letters in 'Aba' is: 65 + 98 + 97 = 260 which is an even number
+Sum of ASCII codes of letters in 'Abb' is: 65 + 98 + 98 = 261 which is an odd number
+Notes:
+
+Preserve the order of the original list.
+Return an empty array [] if there is no developer with an "odd" name.
+The input array and first names will always be valid and formatted as in the example above.
+const yu = 'ABC'.charCodeAt(2);
+
+console.log(yu);
+
+var list1 = [
+  {
+    firstName: 'Aba',
+    lastName: 'N.',
+    country: 'Ghana',
+    continent: 'Africa',
+    age: 21,
+    language: 'Python',
+  },
+  {
+    firstName: 'Abb',
+    lastName: 'O.',
+    country: 'Israel',
+    continent: 'Asia',
+    age: 39,
+    language: 'Java',
+  },
+];
+
+const findOddNames = (arr) => {
+  const yo = arr.filter((item) => {
+    return (
+      item.firstName
+        .split('')
+        .reduce((acc, letter) => acc + letter.charCodeAt(0), 0) %
+        2 !==
+      0
+    );
+  });
+  console.log(yo);
+};
+
+findOddNames(list1);
+
+// function findOddNames(list) {
+//   return list.filter((d) => {
+//     return (
+//       d.firstName.split('').reduce((r, e) => r + e.charCodeAt(0), 0) % 2 !== 0
+//     );
+//   });
+// }
+
+You will be given an array of objects representing data about developers who have signed up to attend the next coding meetup that you are organising.
+
+Given the following input array:
+
+var list1 = [
+  { firstName: null, lastName: 'I.', country: 'Argentina', continent: 'Americas', age: 35, language: 'Java' },
+  { firstName: 'Lukas', lastName: 'X.', country: 'Croatia', continent: 'Europe', age: 35, language: null },
+  { firstName: 'Madison', lastName: 'U.', country: 'United States', continent: 'Americas', age: 32, language: 'Ruby' } 
+];
+write a function that
+
+adds the question property to each object in the input array where the developer has not provided the relevant details (marked with a null value in JavaScript, with the default value in COBOL). The value of the question property should be the following string:
+Hi, could you please provide your <property name>.
+
+and returns only the developers with missing details:
+[
+  { firstName: null, lastName: 'I.', country: 'Argentina', continent: 'Americas', age: 35, language: 'Java', 
+  question: 'Hi, could you please provide your firstName.' },
+  { firstName: 'Lukas', lastName: 'X.', country: 'Croatia', continent: 'Europe', age: 35, language: null, 
+  question: 'Hi, could you please provide your language.' }
+]
+Notes:
+
+At most only one of the values will be null / empty.
+Preserve the order of the original list.
+Return an empty array [] if there is no developer with missing details.
+The input array will always be valid and formatted as in the example above.
+
+
+var list1 = [
+  {
+    firstName: null,
+    lastName: 'I.',
+    country: 'Argentina',
+    continent: 'Americas',
+    age: 35,
+    language: 'Java',
+  },
+  {
+    firstName: 'Lukas',
+    lastName: 'X.',
+    country: 'Croatia',
+    continent: 'Europe',
+    age: 35,
+    language: null,
+  },
+  {
+    firstName: 'Madison',
+    lastName: 'U.',
+    country: 'United States',
+    continent: 'Americas',
+    age: 32,
+    language: 'Ruby',
+  },
+];
+
+const question = function (arr) {
+  arr.every((item) => {
+    return (
+      item.continent !== null &&
+      item.country !== null &&
+      item.age !== null &&
+      item.firstName !== null &&
+      item.language !== null &&
+      item.lastName !== null
+    );
+  })
+    ? arr.filter((item) => {
+        const { firstName, lastName, country, continent, age, language } = item;
+        if (
+          firstName === null ||
+          lastName === null ||
+          country === null ||
+          continent === null ||
+          age === null ||
+          language === null
+        ) {
+          item.question = `Hi, could you please provide your ${
+            firstName === null
+              ? 'firstName'
+              : null || lastName === null
+              ? 'lastName'
+              : null || country === null
+              ? 'country'
+              : null || continent === null
+              ? 'continent'
+              : null || age === null
+              ? 'age'
+              : null || language === null
+              ? 'language'
+              : null
+          }`;
+          return item;
+        }
+      })
+    : [];
+
+  // console.log(filtered);
+};
+
+question(list1);
+
+// if (firstName === null) {
+//   item.question = `Hi, could you please provide your ${firstName} `;
+// } else if (lastName === null) {
+//   item.question = `Hi, could you please provide your ${lastName} `;
+// } else if (country === null) {
+//   item.question = `Hi, could you please provide your ${country} `;
+// } else if (continent === null) {
+//   item.question = `Hi, could you please provide your ${continent} `;
+// } else if (age === null) {
+//   item.question = `Hi, could you please provide your ${age} `;
+// } else if (language === null) {
+//   item.question = `Hi, could you please provide your ${language} `;
+// } else {
+//   console.log('ff');
+// }
+
+
+You will be given a sequence of objects representing data about developers who have signed up to attend the next coding meetup that you are organising.
+
+Your task is to return a sequence which includes the developer who is the oldest. In case of a tie, include all same-age senior developers listed in the same order as they appeared in the original input array.
+
+For example, given the following input array:
+
+var list1 = [
+  { firstName: 'Gabriel', lastName: 'X.', country: 'Monaco', continent: 'Europe', age: 49, language: 'PHP' },
+  { firstName: 'Odval', lastName: 'F.', country: 'Mongolia', continent: 'Asia', age: 38, language: 'Python' },
+  { firstName: 'Emilija', lastName: 'S.', country: 'Lithuania', continent: 'Europe', age: 19, language: 'Python' },
+  { firstName: 'Sou', lastName: 'B.', country: 'Japan', continent: 'Asia', age: 49, language: 'PHP' },
+];
+your function should return the following array:
+
+[
+  { firstName: 'Gabriel', lastName: 'X.', country: 'Monaco', continent: 'Europe', age: 49, language: 'PHP' },
+  { firstName: 'Sou', lastName: 'B.', country: 'Japan', continent: 'Asia', age: 49, language: 'PHP' },
+]
+Notes:
+
+The input array will always be valid and formatted as in the example above and will never be empty.
+
+
+
+var list1 = [
+  {
+    firstName: 'Gabriel',
+    lastName: 'X.',
+    country: 'Monaco',
+    continent: 'Europe',
+    age: 49,
+    language: 'PHP',
+  },
+  {
+    firstName: 'Odval',
+    lastName: 'F.',
+    country: 'Mongolia',
+    continent: 'Asia',
+    age: 38,
+    language: 'Python',
+  },
+  {
+    firstName: 'Emilija',
+    lastName: 'S.',
+    country: 'Lithuania',
+    continent: 'Europe',
+    age: 19,
+    language: 'Python',
+  },
+  {
+    firstName: 'Sou',
+    lastName: 'B.',
+    country: 'Japan',
+    continent: 'Asia',
+    age: 49,
+    language: 'PHP',
+  },
+];
+
+const oldestDeveloper = function (arr) {
+  let ages = [];
+  arr.map((item) => {
+    ages.push(item.age);
+  });
+  console.log(ages);
+  const oldest = Math.max(...ages);
+  console.log(oldest);
+
+  const result = arr.filter((item) => item.age === oldest);
+
+  console.log(result);
+};
+
+oldestDeveloper(list1);
 */
